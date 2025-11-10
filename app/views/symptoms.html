@@ -8,7 +8,7 @@
 
 {% block beforeContent %}
   {{ backLink({
-    href: "#",
+    href: "/magical-powers",
     text: "Back"
   }) }}
 {% endblock %}
@@ -16,13 +16,14 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form action="/form-handler" method="post" novalidate>
+      <form action="/check-answers" method="post" novalidate>
 
        {% from 'textarea/macro.njk' import textarea %}
 
 {{ textarea({
   name: "symptoms",
   id: "symptoms",
+  value: data.symptoms,
   label: {
     text: "Tell us more about your magical powers?",
     classes: "nhsuk-label--l",

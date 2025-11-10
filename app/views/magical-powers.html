@@ -8,7 +8,7 @@
 
 {% block beforeContent %}
   {{ backLink({
-    href: "#",
+    href: "/start-page",
     text: "Back"
   }) }}
 {% endblock %}
@@ -19,7 +19,8 @@
       <form action="/symptoms" method="post" novalidate>
 
         {{ radios({
-          name: "doYouHaveMagicalPowers",
+          name: "hasMagicalPowers",
+          value: data.hasMagicalPowers,
           fieldset: {
             legend: {
               text: "Do you think you have magical powers?",
@@ -29,15 +30,15 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "no",
+              value: "No",
               text: "No"
             },
             {
-              value: "notSure",
+              value: "I'm not sure",
               text: "I'm not sure"
             }
           ]
