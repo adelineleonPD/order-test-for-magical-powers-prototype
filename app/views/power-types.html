@@ -4,10 +4,23 @@
 
 {% set mainClasses = "nhsuk-main-wrapper--s" %}
 
+{% block beforeContent %}
+  {{ backLink({
+    href: "/magical-powers",
+    text: "Back"
+  }) }}
+{% endblock %}
+
 {% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/power-types-answer" method="post" novalidate>
+
+       {% from 'textarea/macro.njk' import textarea %}
 {{ checkboxes({
   idPrefix: "powers",
   name: "powers",
+  values: data.powers,
   fieldset: {
     legend: {
       text: "Do you have any of these magic powers?",
@@ -21,34 +34,35 @@
   items: [
     {
       value: "Invisibility",
-      text: "Invisibility",
-      exclusiveGroup: "powers-list"
+      text: "Invisibility"
     },
     {
       value: "Leviation or flying",
-      text: "Leviation or flying",
-      exclusiveGroup: "powers-list"
+      text: "Leviation or flying"
     },
     {
       value: "Shoot lasers",
-      text: "Shooting lasers",
-      exclusiveGroup: "powers-list"
+      text: "Shooting lasers"
     },
     {
       value: "Jira master",
-      text: "Completing 20 Jira tickets in one sprint",
-      exclusiveGroup: "powers-list"
+      text: "Completing 20 Jira tickets in one sprint"
     },
     {
       divider: "or"
     },
     {
-      value: "none",
+      value: "Other",
       text: "No, I have other powers",
-      exclusive: true,
-      exclusiveGroup: "symptoms-list"
+      exclusive: true
     }
   ]
 }) }}
+        {{ button({
+          text: "Continue"
+        }) }}
 
+      </form>
+    </div>
+  </div>
 {% endblock %}

@@ -14,6 +14,14 @@
         Your details
       </h2>
 
+    {% set powersHTML %}
+      <ul> 
+        {% for powers in data.powers%}
+          <li>{{ powers }}</li>
+        {% endfor %}
+      </ul>
+    {% endset %}
+
       {{ summaryList({
         rows: [
           {
@@ -35,6 +43,23 @@
           },
           {
             key: {
+              text: "Your powers"
+            },
+            value: {
+              html: powersHTML
+            },
+            actions: {
+              items: [
+                {
+                  href: "/power-types",
+                  text: "Change",
+                  visuallyHiddenText: "symptoms"
+                }
+              ]
+            }
+          },
+          {
+            key: {
               text: "Details about your magical powers"
             },
             value: {
@@ -50,7 +75,7 @@
               ]
             }
           }
-            }
+        ]
       }) }}
 
 
