@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% from 'checkboxes/macro.njk' import checkboxes %}
+
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
+{% block content %}
+{{ checkboxes({
+  idPrefix: "powers",
+  name: "powers",
+  fieldset: {
+    legend: {
+      text: "Do you have any of these magic powers?",
+      isPageHeading: true,
+      classes: "nhsuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    text: "Select all the powers you have"
+  },
+  items: [
+    {
+      value: "Invisibility",
+      text: "Invisibility",
+      exclusiveGroup: "powers-list"
+    },
+    {
+      value: "Leviation or flying",
+      text: "Leviation or flying",
+      exclusiveGroup: "powers-list"
+    },
+    {
+      value: "Shoot lasers",
+      text: "Shooting lasers",
+      exclusiveGroup: "powers-list"
+    },
+    {
+      value: "Jira master",
+      text: "Completing 20 Jira tickets in one sprint",
+      exclusiveGroup: "powers-list"
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "none",
+      text: "No, I have other powers",
+      exclusive: true,
+      exclusiveGroup: "symptoms-list"
+    }
+  ]
+}) }}
+
+{% endblock %}
